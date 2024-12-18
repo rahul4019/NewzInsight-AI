@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import { motion } from "framer-motion";
+import InputDemo from "../ui/InputWithButton";
 
 export function HeroSection() {
   return (
@@ -38,6 +39,7 @@ export function HeroSection() {
           </div>
         </div>
       </motion.div>
+      <InputDemo />
     </section>
   );
 }

@@ -9,11 +9,13 @@ export function Header() {
         <div className="flex items-center space-x-2">
           <NewspaperIcon className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
-            NewsLens
+            NewzInsight
           </span>
         </div>
-        <NavLinks />
-        <ModeToggle />
+        <div className="flex gap-4">
+          <NavLinks />
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );
