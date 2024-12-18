@@ -30,7 +30,7 @@ export function RecentAnalysisCard({
       <h3 className="font-semibold text-xl mb-2 line-clamp-2">
         {analysis.title}
       </h3>
-      <p className="text-gray-500 text-sm mb-4">
+      <p className="text-muted-foreground text-sm mb-4">
         {analysis.source} • {analysis.date}
       </p>
 
@@ -59,7 +59,7 @@ export function RecentAnalysisCard({
         </span>
       </div>
 
-      <button className="text-indigo-600 hover:text-indigo-700 text-sm font-medium inline-flex items-center gap-1">
+      <button className="text-primary text-sm font-medium inline-flex items-center gap-1">
         View Analysis
         <ExternalLink className="h-4 w-4" />
       </button>

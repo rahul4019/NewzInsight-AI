@@ -36,7 +36,7 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-32">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -49,10 +49,10 @@ export function FeaturesSection() {
                 viewport={{ once: true }}
               >
                 <div className="rounded-lg p-3 inline-block mb-4">
-                  <Icon className="h-6 w-6 text-indigo-600" />
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>
             );
           })}
