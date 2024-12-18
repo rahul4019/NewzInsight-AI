@@ -4,58 +4,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
+    --background: linear-gradient(
+      135deg,
+      270 60% 40%,
+      /* Deep Purple */ 280 60% 50% /* Lavender Purple */
+    ); /* Gradient from purple to light purple for light mode */
+    --foreground: 222.2 84% 4.9%; /* Dark text */
+    --primary: 270 60% 40%; /* Deep Purple */
+    --primary-foreground: 210 40% 98%; /* Light text for primary */
+    --secondary: 280 60% 50%; /* Lavender Purple */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Dark text for secondary */
+    --muted: 210 40% 96.1%; /* Light gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Darker gray text */
+    --accent: 0 100% 50%; /* Bright Red */
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 214.3 31.8% 91.4%; /* Light gray border */
+    --input: 214.3 31.8% 91.4%; /* Light gray input */
+    --ring: 270 60% 40%; /* Deep purple ring */
     --radius: 0.75rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
   }
 
   .dark {
-    --background: 220 14% 20%; /* Slightly lighter dark background */
-    --foreground: 210 40% 85%; /* Lighter text color */
-    --card: 220 14% 20%; /* Slightly lighter card background */
-    --card-foreground: 210 40% 85%; /* Lighter text inside cards */
-    --popover: 220 14% 20%;
-    --popover-foreground: 210 40% 85%;
-    --primary: 217.2 91.2% 59.8%; /* Keep primary color */
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 25%; /* Lighter secondary color */
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 25%; /* Lighter muted color */
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 25%; /* Lighter accent color */
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 50%; /* Slightly lighter destructive */
+    --background: 0 0% 13%;
+    --foreground: 210 40% 90%; /* Light text for dark mode */
+    --primary: 270 60% 70%; /* Darker purple */
+    --primary-foreground: 210 40% 98%; /* Lighter text on purple */
+    --secondary: 280 60% 45%; /* Soft purple-pink */
+    --secondary-foreground: 210 40% 98%; /* Light text for secondary */
+    --muted: 240 20% 45%; /* Muted soft gray for dark mode */
+    --muted-foreground: 210 40% 90%; /* Light muted text */
+    --accent: 0 100% 45%; /* Darker red */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 62.8% 45%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 30% 40%; /* Lighter border */
-    --input: 220 30% 40%; /* Lighter input border */
-    --ring: 224.3 76.3% 48%; /* Ring remains the same */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 240 20% 60%; /* Softer border for dark mode */
+    --input: 240 20% 50%; /* Darker input field for dark mode */
+    --ring: 270 60% 40%; /* Purple ring */
   }
 }
 
