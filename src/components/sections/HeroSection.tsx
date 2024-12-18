@@ -1,6 +1,5 @@
 "use client";
 
-import { Search } from "lucide-react";
 import { motion } from "framer-motion";
 import InputDemo from "../ui/InputWithButton";
 
