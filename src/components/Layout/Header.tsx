@@ -1,5 +1,6 @@
 import { NewspaperIcon } from "lucide-react";
 import { NavLinks } from "./NavLinks";
+import { ModeToggle } from "../theme-toggle";
 
 export function Header() {
   return (
@@ -12,6 +13,7 @@ export function Header() {
           </span>
         </div>
         <NavLinks />
+        <ModeToggle />
       </div>
     </header>
   );
