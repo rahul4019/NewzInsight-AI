@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Scale, LineChart, Newspaper } from "lucide-react";
+import { Brain, Scale, LineChart } from "lucide-react";
 
 const features = [
   {
