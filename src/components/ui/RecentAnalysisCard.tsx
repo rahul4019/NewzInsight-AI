@@ -22,7 +22,7 @@ export function RecentAnalysisCard({
 }: RecentAnalysisCardProps) {
   return (
     <motion.div
-      className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow"
+      className="bg-card backdrop-blur-sm rounded-xl shadow-lg border  p-6 hover:shadow-xl transition-shadow"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -36,12 +36,12 @@ export function RecentAnalysisCard({
 
       <div className="flex gap-3 mb-4">
         <span
-          className={`px-3 py-1 rounded-full text-sm ${
+          className={`px-3 py-1 rounded-full text-sm font-semibold ${
             analysis.sentiment === "positive"
-              ? "bg-green-100 text-green-700"
+              ? "border-2 border-green-500 text-green-500"
               : analysis.sentiment === "negative"
-                ? "bg-red-100 text-red-700"
-                : "bg-gray-100 text-gray-700"
+                ? "border-2 border-red-500 text-red-500"
+                : "border-2 border-gray-500 text-gray-500"
           }`}
         >
           {analysis.sentiment}
@@ -49,10 +49,10 @@ export function RecentAnalysisCard({
         <span
           className={`px-3 py-1 rounded-full text-sm ${
             analysis.bias === "low"
-              ? "bg-green-100 text-green-700"
+              ? "border-2 border-green-500 text-green-500"
               : analysis.bias === "high"
-                ? "bg-red-100 text-red-700"
-                : "bg-yellow-100 text-yellow-700"
+                ? "border-2 border-red-500 text-red-500"
+                : "border-2 border-gray-500 text-gray-500"
           }`}
         >
           {analysis.bias} bias

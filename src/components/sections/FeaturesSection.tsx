@@ -25,13 +25,13 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-white to-indigo-50">
+    <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Why Choose NewsLens?
+          <h2 className="text-3xl font-bold text-primary mb-4">
+            Why Choose NewzInsight?
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-muted-foreground">
             Powerful tools for understanding news content
           </p>
         </div>
@@ -42,13 +42,13 @@ export function FeaturesSection() {
             return (
               <motion.div
                 key={index}
-                className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100"
+                className=" backdrop-blur-sm p-6 rounded-xl shadow-lg border"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-indigo-100 rounded-lg p-3 inline-block mb-4">
+                <div className="rounded-lg p-3 inline-block mb-4">
                   <Icon className="h-6 w-6 text-indigo-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>

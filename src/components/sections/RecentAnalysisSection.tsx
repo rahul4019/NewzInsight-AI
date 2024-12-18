@@ -32,8 +32,8 @@ export function RecentAnalysisSection() {
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
-          <Clock className="h-6 w-6 text-indigo-600" />
-          <h2 className="text-3xl font-bold text-gray-900">Recent Analyses</h2>
+          <Clock className="h-6 w-6 text-primary" />
+          <h2 className="text-3xl font-bold text-primary">Recent Analyses</h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
