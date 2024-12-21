@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as cheerio from "cheerio";
+import getNewsInsight from "@/helper/getNewsInsight";
 
 async function fetchAndExtractArticle(articleUrl: string) {
   try {
@@ -53,6 +54,8 @@ export async function POST(request: NextRequest) {
     const articleUrl = body;
 
     const articleText = await fetchAndExtractArticle(articleUrl);
+
+    const insights = await getNewsInsight(articleText);
 
     console.log(articleText);
 
