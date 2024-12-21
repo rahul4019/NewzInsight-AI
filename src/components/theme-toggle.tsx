@@ -15,7 +15,7 @@ export function ModeToggle() {
 
   return (
     <Button
-      variant="secondary"
+      variant="link"
       className="rounded-full"
       size="icon"
       onClick={toggleTheme}

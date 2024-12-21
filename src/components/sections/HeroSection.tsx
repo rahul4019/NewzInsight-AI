@@ -18,7 +18,7 @@ export function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-primary">
+        <h1 className="text-5xl z-50 font-bold bg-clip-text text-transparent bg-primary">
           Understand News Like Never Before
         </h1>
         <p className="text-xl text-muted-foreground">
