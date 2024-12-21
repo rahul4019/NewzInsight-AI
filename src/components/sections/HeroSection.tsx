@@ -7,8 +7,10 @@ import { Sparkles } from "lucide-react";
 
 const handleAnalyze = async () => {
   try {
+    // const articleUrl =
+    //   "https://www.hindustantimes.com/india-news/arrest-warrant-issued-against-former-india-cricketer-robin-uthappa-in-alleged-epf-fraud-101734762519865.html";
     const articleUrl =
-      "https://www.hindustantimes.com/india-news/arrest-warrant-issued-against-former-india-cricketer-robin-uthappa-in-alleged-epf-fraud-101734762519865.html";
+      "https://nypost.com/2024/12/20/us-news/house-republicans-greenlight-short-term-spending-package-that-will-need-dem-support-just-hours-before-government-is-set-to-shut-down/";
     const response = await fetch("/api/analyze", {
       method: "POST",
       body: JSON.stringify(articleUrl),
