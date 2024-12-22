@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Layout/Header";
 import { ThemeProvider } from "@/components/theme-provider";
+import InsightProvider from "./insight-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <InsightProvider>
+            <Header />
+            {children}
+          </InsightProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import BlurryBlob from "../ui/blurry-blob";
 import { Input } from "../ui/input";
 import { LoaderCircle, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { InsightContext } from "@/app/insight-provider";
 
 export function HeroSection() {
   const [loading, setLoading] = useState(false);
+  const { insight, setInsight } = useContext(InsightContext);
 
   const handleAnalyze = async () => {
     try {
@@ -24,6 +26,7 @@ export function HeroSection() {
       const data = await response.json();
 
       console.log("Response: ", data);
+      setInsight(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -32,7 +35,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 py-16">
+    <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-4 py-16">
       <BlurryBlob
         className="opacity-40 rounded-xl absolute"
         firstBlobColor="bg-purple-400"
