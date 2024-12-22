@@ -45,9 +45,9 @@ export default function Component() {
   return (
     <Card className="rounded-lg shadow-lg overflow-hidden lg:w-1/2">
       <CardHeader className="bg-primary">
-        <CardTitle className="text-xl text-gray-200">Sentiment</CardTitle>
+        <CardTitle className="text-xl text-gray-200">Bias Analysis</CardTitle>
         <CardDescription className="text-gray-300">
-          Analysis of the sentiment
+          Distribution of bias sentiment in the article content
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">

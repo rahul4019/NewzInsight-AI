@@ -1,22 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const links = ["Dashboard", "History", "About"];
+const links = [
+  { name: "History", link: "/history" },
+  { name: "About", link: "/#about" },
+];
 
 export function NavLinks() {
   return (
     <nav className="hidden md:flex items-center space-x-6">
       {links.map((link) => (
-        <motion.a
-          key={link}
-          href="#"
-          className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+        <motion.div
+          key={link.name}
+          className="text-foreground hover:text-primary"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {link}
-        </motion.a>
+          <Link href={link.link}> {link.name} </Link>
+        </motion.div>
       ))}
     </nav>
   );
