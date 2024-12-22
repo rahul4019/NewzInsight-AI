@@ -24,35 +24,15 @@ export default function KeyPoints() {
       color: "text-red-600",
       icon: AlertTriangle,
     },
-    {
-      text: "Customer support response time identified as key issue",
-      color: "text-gray-700",
-      icon: AlertTriangle,
-    },
-    {
-      text: "UI improvements needed in specific areas",
-      color: "text-gray-700",
-      icon: AlertTriangle,
-    },
-    {
-      text: "Pricing strategy review initiated",
-      color: "text-gray-700",
-      icon: MinusCircle,
-    },
-    {
-      text: "Implementing continuous feedback monitoring",
-      color: "text-gray-700",
-      icon: CheckCircle,
-    },
   ];
 
   return (
-    <Card className="bg-white shadow-lg rounded-lg overflow-hidden">
-      <CardHeader className="bg-gray-50 border-b border-gray-200">
-        <CardTitle className="text-xl sm:text-2xl text-gray-800">
+    <Card className="rounded-lg overflow-hidden lg:w-1/2 shadow-lg">
+      <CardHeader className="bg-primary">
+        <CardTitle className="text-xl sm:text-2xl text-gray-200">
           Key Highlights
         </CardTitle>
-        <CardDescription className="text-gray-600">
+        <CardDescription className="text-gray-300">
           Important information at a glance
         </CardDescription>
       </CardHeader>

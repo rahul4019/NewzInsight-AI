@@ -8,17 +8,17 @@ import {
 
 export default function Summary() {
   return (
-    <Card className="h-full bg-white shadow-lg rounded-lg overflow-hidden">
-      <CardHeader className="bg-gray-50 border-b border-gray-200">
-        <CardTitle className="text-xl sm:text-2xl text-gray-800">
+    <Card className="h-full shadow-lg rounded-lg overflow-hidden">
+      <CardHeader className="bg-primary">
+        <CardTitle className="text-xl sm:text-2xl text-gray-200">
           Executive Summary
         </CardTitle>
-        <CardDescription className="text-gray-600">
+        <CardDescription className="text-gray-300">
           Comprehensive overview of our current status
         </CardDescription>
       </CardHeader>
       <CardContent className="prose max-w-none p-4 sm:p-6">
-        <p className="lead text-lg text-gray-800 font-semibold">
+        <p className="lead text-lg font-semibold">
           Our recent sentiment analysis reveals valuable insights into customer
           feedback and overall satisfaction.
         </p>
@@ -36,17 +36,6 @@ export default function Summary() {
           accounts for 33% of the feedback. While not negative, this presents an
           opportunity to convert these neutral experiences into positive ones
           through targeted improvements and engagement strategies.
-        </p>
-        <p>
-          <span className="font-bold text-red-600">Negative sentiment</span>{" "}
-          makes up 23% of the feedback. While this is the smallest segment, it's
-          crucial to address these concerns promptly. We've initiated a deep
-          dive into this feedback to identify common issues and develop action
-          plans for resolution.
-        </p>
-        <p>
-          Key areas for improvement identified from the negative feedback
-          include:
         </p>
         <ul>
           <li>Response time for customer support inquiries</li>

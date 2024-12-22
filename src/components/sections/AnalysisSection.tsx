@@ -14,33 +14,29 @@ export default function AnalysisSection() {
         transition={{ duration: 0.5 }}
         className="container mx-auto max-w-7xl"
       >
-        <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">
-          Sentiment Analysis Dashboard
+        <h1 className="text-3xl text-primary sm:text-4xl font-bold mb-6 sm:mb-8 text-center">
+          Analysis of the article
         </h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-2"
-          >
-            <PieChartSection />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <KeyPoints />
-          </motion.div>
+        <div className="flex flex-col gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="lg:col-span-3"
           >
-            <Summary />
+            <div className="flex flex-col lg:flex-row justify-around w-full gap-4 ">
+              <PieChartSection />
+              <KeyPoints />
+            </div>
           </motion.div>
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <Summary />
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </div>

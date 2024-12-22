@@ -18,35 +18,37 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 const chartData = [
-  { bias: "Positive", value: 40, fill: "#4A90E2" },
-  { bias: "Negative", value: 30, fill: "#D0021B" },
-  { bias: "Neutral", value: 30, fill: "#F5A623" },
+  { bias: "Positive", value: 20, fill: "#00C853" },
+  { bias: "Negative", value: 40, fill: "#E63946" },
+  { bias: "Neutral", value: 40, fill: "#FFEB3B" },
 ];
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  bias: {
+    label: "bias",
   },
   positive: {
     label: "Positive",
-    color: "#4A90E2",
+    color: "#00c853",
   },
   negative: {
     label: "Negative",
-    color: "#D0021B",
+    color: "#E63946",
   },
   netural: {
-    label: "Negative",
-    color: "#F5A623",
+    label: "Neutral",
+    color: "#FFEB3B",
   },
 } satisfies ChartConfig;
 
 export default function Component() {
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Sentiment</CardTitle>
-        <CardDescription>Analysis of the sentiment</CardDescription>
+    <Card className="rounded-lg shadow-lg overflow-hidden lg:w-1/2">
+      <CardHeader className="bg-primary">
+        <CardTitle className="text-xl text-gray-200">Sentiment</CardTitle>
+        <CardDescription className="text-gray-300">
+          Analysis of the sentiment
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
