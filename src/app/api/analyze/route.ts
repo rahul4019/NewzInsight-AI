@@ -55,11 +55,7 @@ export async function POST(request: NextRequest) {
 
     const articleText = await fetchAndExtractArticle(articleUrl);
 
-    const insights = await getNewsInsight(articleText);
-
-    console.log(articleText);
-
-    console.log("CONTENT\n: ", articleText);
+    // const insights = await getNewsInsight(articleText);
 
     const data = { message: "we got your message" };
     return NextResponse.json(data, { status: 200 });
