@@ -29,26 +29,29 @@ export default function KeyPoints() {
   return (
     <Card className="rounded-lg overflow-hidden lg:w-1/2 shadow-lg">
       <CardHeader className="bg-primary">
-        <CardTitle className="text-xl sm:text-2xl text-gray-200">
-          Key Highlights
+        <CardTitle className="text-xl text-gray-200 ">
+          Bias Assessment
         </CardTitle>
         <CardDescription className="text-gray-300">
           Important information at a glance
         </CardDescription>
       </CardHeader>
       <CardContent className="p-4 sm:p-6">
-        <ul className="space-y-3 sm:space-y-4">
-          {points.map((point, index) => (
-            <li key={index} className="flex items-start">
-              <point.icon
-                className={`mr-2 h-5 w-5 flex-shrink-0 ${point.color}`}
-              />
-              <span className={`text-base sm:text-lg ${point.color}`}>
-                {point.text}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col gap-2">
+          <p>
+            <span className="text-red-500 font-semibold">Biasness</span>: The
+            article presents a slightly positive framing of Trump's influence on
+            the bill's passage, portraying his objections as leading to a more
+            fiscally responsible outcome, without fully exploring potential
+            negative consequences of his actions.
+          </p>
+          <p>
+            <span className="text-green-500 font-semibold">Solution</span>:
+            Include more balanced perspectives from critics of Trump's influence
+            on the bill, highlighting potential drawbacks of the reduced
+            spending and the political maneuvering involved.
+          </p>
+        </div>
       </CardContent>
     </Card>
   );

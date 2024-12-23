@@ -3,9 +3,13 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const constructPrompt = (articleText: string) => {
   return `Analyze the following news article and provide the following information in a structured JSON format:
 
-1. Summary: A concise summary of the main points of the article. Aim for approximately 200 words.
+1. Summary: A concise summary of the main points of the article. Aim for approximately 100 words.
 2. Sentiment: The overall sentiment expressed in the article, broken down into positive, negative, and neutral percentages. The percentages should add up to 100%.
-3. Bias Assessment: A brief assessment of potential bias in the article, explained in three sentences.
+3. Bias Assessment: 
+    * Determine if the article exhibits any bias. 
+    * If biased, provide a one-line explanation of the observed bias. 
+    * If biased, suggest one mitigation strategy to address the potential impact of the bias.
+    * If unbiased, state "No bias detected."
 
 Article:
 ${articleText.slice(0, 4000)}
@@ -19,7 +23,11 @@ Respond in JSON format like this:
     "negative": 0,
     "neutral": 0
   },
-  "bias_assessment": "..."
+  "biasAssessment": {
+    "isBiased": true/false, 
+    "explanation": "Explanation of bias (if applicable)", 
+    "mitigation": "Mitigation strategy (if applicable)" 
+  }
 }
 `;
 };

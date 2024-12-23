@@ -6,10 +6,10 @@ import Summary from "../ui/Summary";
 import KeyPoints from "../ui/KeyPoints";
 import { useContext } from "react";
 import { InsightContext } from "@/app/insight-provider";
-import Loading from "./Loading";
 
 export default function AnalysisSection() {
   const { insight, setInsight } = useContext(InsightContext);
+  // const { sentiment, bias_assessment, summary } = insight;
   console.log(insight);
   return (
     <div>
@@ -31,6 +31,7 @@ export default function AnalysisSection() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="flex flex-col lg:flex-row justify-around w-full gap-4 ">
+                  {/* {sentiment && <PieChartSection sentiment={sentiment} />} */}
                   <PieChartSection />
                   <KeyPoints />
                 </div>

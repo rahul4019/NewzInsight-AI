@@ -41,7 +41,8 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function Component() {
+export default function SentimentAnalysis() {
+  // console.log("sentiment in PieChart: ", sentiment)
   return (
     <Card className="rounded-lg shadow-lg overflow-hidden lg:w-1/2">
       <CardHeader className="bg-primary">

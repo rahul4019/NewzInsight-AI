@@ -18,49 +18,17 @@ export default function Summary() {
         </CardDescription>
       </CardHeader>
       <CardContent className="prose max-w-none p-4 sm:p-6">
-        <p className="lead text-lg font-semibold">
-          Our recent sentiment analysis reveals valuable insights into customer
-          feedback and overall satisfaction.
-        </p>
-        <p>
-          The analysis shows a{" "}
-          <span className="font-bold text-blue-600">
-            predominantly positive sentiment
-          </span>
-          , with 44% of feedback being positive. This indicates that our efforts
-          in product quality and customer service are resonating well with our
-          user base.
-        </p>
-        <p>
-          <span className="font-bold text-yellow-600">Neutral sentiment</span>{" "}
-          accounts for 33% of the feedback. While not negative, this presents an
-          opportunity to convert these neutral experiences into positive ones
-          through targeted improvements and engagement strategies.
-        </p>
-        <ul>
-          <li>Response time for customer support inquiries</li>
-          <li>User interface intuitiveness in certain product areas</li>
-          <li>Pricing structure for specific customer segments</li>
-        </ul>
-        <p>Moving forward, our strategy will focus on:</p>
-        <ol>
-          <li>
-            Enhancing our customer support system to improve response times
-          </li>
-          <li>Conducting user experience workshops to address UI concerns</li>
-          <li>
-            Reviewing our pricing strategy to ensure it aligns with perceived
-            value
-          </li>
-          <li>
-            Implementing a feedback loop to continuously monitor and act on
-            customer sentiment
-          </li>
-        </ol>
-        <p>
-          By addressing these areas, we aim to shift more neutral sentiment
-          towards positive and mitigate negative experiences, ultimately
-          improving overall customer satisfaction and loyalty.
+        <p className="lead">
+          Congress passed a significantly reduced government funding bill after
+          President-elect Donald Trump and his advisor Elon Musk objected to the
+          initial, much larger spending package. The original 1547-page bill was
+          reduced to 118 pages, avoiding a government shutdown. The smaller bill
+          passed the Senate shortly after a midnight deadline and the House
+          overwhelmingly approved it. Eliminated provisions included
+          congressional pay raises and the reauthorization of the State
+          Department's Global Engagement Center. The compromise bill funds the
+          government until March 14, 2025, and includes hurricane relief and aid
+          to farmers
         </p>
       </CardContent>
     </Card>
