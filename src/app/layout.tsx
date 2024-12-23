@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Layout/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 import InsightProvider from "./insight-provider";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster theme="dark" richColors />
           <InsightProvider>
             <Header />
             {children}

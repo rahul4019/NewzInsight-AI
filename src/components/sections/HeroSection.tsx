@@ -3,21 +3,33 @@
 import { motion } from "framer-motion";
 import BlurryBlob from "../ui/blurry-blob";
 import { Input } from "../ui/input";
-import { LoaderCircle, Sparkles } from "lucide-react";
+import { Ban, LoaderCircle, Sparkles } from "lucide-react";
 import { useContext, useState } from "react";
 import { InsightContext } from "@/app/insight-provider";
+import { toast } from "sonner";
 
 export function HeroSection() {
   const [loading, setLoading] = useState(false);
   const { insight, setInsight } = useContext(InsightContext);
+  const [articleUrl, setArticleUrl] = useState("");
 
   const handleAnalyze = async () => {
     try {
       setLoading(true);
       // const articleUrl =
       //   "https://www.hindustantimes.com/india-news/arrest-warrant-issued-against-former-india-cricketer-robin-uthappa-in-alleged-epf-fraud-101734762519865.html";
-      const articleUrl =
-        "https://nypost.com/2024/12/20/us-news/house-republicans-greenlight-short-term-spending-package-that-will-need-dem-support-just-hours-before-government-is-set-to-shut-down/";
+      // const articleUrl =
+      //   "https://nypost.com/2024/12/20/us-news/house-republicans-greenlight-short-term-spending-package-that-will-need-dem-support-just-hours-before-government-is-set-to-shut-down/";
+
+      if (!articleUrl.trim()) {
+        return;
+      }
+      // validation for url
+      const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/;
+      if (!urlRegex.test(articleUrl.trim())) {
+        toast.error("Invalid URL");
+        return;
+      }
       const response = await fetch("/api/analyze", {
         method: "POST",
         body: JSON.stringify(articleUrl),
@@ -63,6 +75,8 @@ export function HeroSection() {
                   className="placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0 border-2 focus:outline-none px-6 py-7 -me-px flex-1 rounded-e-none shadow-none !text-lg"
                   placeholder="Paste article URL here..."
                   type="url"
+                  onChange={(e) => setArticleUrl(e.target.value)}
+                  value={articleUrl}
                 />
                 <button
                   className="bg-primary inline-flex items-center rounded-e-lg border border-input px-3 text-sm font-medium text-white outline-offset-2 transition-colors hover:bg-primary/80 hover:text-white focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50"
