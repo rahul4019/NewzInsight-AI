@@ -55,9 +55,9 @@ export async function POST(request: NextRequest) {
 
     const articleText = await fetchAndExtractArticle(articleUrl);
 
-    // const insights = await getNewsInsight(articleText);
+    const insights = await getNewsInsight(articleText);
 
-    const data = { message: "we got your message" };
+    const data = { insight: insights };
     return NextResponse.json(data, { status: 200 });
   } catch (error) {}
 }

@@ -31,7 +31,24 @@ const getNewsInsight = async (articleText: string) => {
     const prompt = constructPrompt(articleText);
 
     const result = await model.generateContent(prompt);
-    console.log(result.response.text());
+    const responseText = result.response.text();
+
+    // format response text to convert it to json
+    const formattedResponse = responseText.replace(/```json|```/g, "");
+    console.log("responseText: ", formattedResponse);
+
+    try {
+      const parsedResponse = JSON.parse(formattedResponse);
+      return parsedResponse; // Return the parsed JSON object
+    } catch (jsonError) {
+      console.error("Error parsing JSON response:", jsonError);
+      console.error("Raw Gemini Response:", responseText);
+
+      return {
+        error: "Invalid JSON response from Gemini",
+        rawResponse: responseText,
+      };
+    }
   } catch (error) {}
 };
 
