@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Scale, LineChart } from "lucide-react";
+import { Scale, LineChart, Sparkles } from "lucide-react";
 
 const features = [
   {
-    icon: Brain,
+    icon: Sparkles,
     title: "AI-Powered Analysis",
     description:
       "Advanced machine learning algorithms analyze article content for deeper insights",
@@ -29,7 +29,7 @@ export function FeaturesSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-primary mb-4">
-            Why Choose NewzInsight?
+            Experience the Future of News
           </h2>
           <p className="text-xl text-muted-foreground">
             Powerful tools for understanding news content
@@ -42,14 +42,15 @@ export function FeaturesSection() {
             return (
               <motion.div
                 key={index}
-                className=" backdrop-blur-sm p-6 rounded-xl shadow-lg border"
+                className="flex flex-col p-6 h-full bg-background dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
+                whileHover={{ scale: 1.03 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
                 viewport={{ once: true }}
               >
-                <div className="rounded-lg p-3 inline-block mb-4">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-full mb-4">
+                  <Icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
