@@ -15,8 +15,6 @@ export default function KeyPoints({
     solution: string;
   };
 }) {
-  console.log(biasAssessment);
-
   return (
     <Card className="rounded-lg overflow-hidden lg:w-1/2 shadow-lg">
       <CardHeader className="bg-primary">

@@ -39,8 +39,12 @@ export default async function fetchAndExtractArticle(articleUrl: string) {
       .trim();
 
     return cleanedText;
-  } catch (error: any) {
-    console.error("error fetching or extracting the article:", error.message);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message); // Access message safely
+    } else {
+      console.error("Unknown error", error);
+    }
     return "failed to extract article content.";
   }
 }

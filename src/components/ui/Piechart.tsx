@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, TrendingUp } from "lucide-react";
+import { Circle } from "lucide-react";
 import { Pie, PieChart } from "recharts";
 
 import {
@@ -23,7 +23,6 @@ export default function SentimentAnalysis({
 }: {
   sentiment: { positive: number; negative: number; neutral: number };
 }) {
-  console.log("sentiment: ", sentiment);
   const chartData = [
     { bias: "Positive", value: sentiment.positive, fill: "#00C853" },
     { bias: "Negative", value: sentiment.negative, fill: "#E63946" },

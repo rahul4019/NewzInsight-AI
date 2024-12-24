@@ -40,8 +40,8 @@ export function HeroSection() {
 
       const data: Insight = await response.json();
 
-      console.log("Response: ", data);
       setInsight(data);
+      setArticleUrl("");
     } catch (error) {
       console.log(error);
     } finally {

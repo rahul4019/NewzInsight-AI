@@ -43,7 +43,6 @@ const getNewsInsight = async (articleText: string) => {
 
     // format response text to convert it to json
     const formattedResponse = responseText.replace(/```json|```/g, "");
-    console.log("responseText: ", formattedResponse);
 
     try {
       const parsedResponse = JSON.parse(formattedResponse);
@@ -57,7 +56,10 @@ const getNewsInsight = async (articleText: string) => {
         rawResponse: responseText,
       };
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error("Internal server Error", error);
+    throw new Error();
+  }
 };
 
 export default getNewsInsight;

@@ -1,4 +1,3 @@
-import { Insight } from "@/app/insight-provider";
 import {
   Card,
   CardContent,
