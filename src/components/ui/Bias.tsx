@@ -6,38 +6,59 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AlertCircle, CheckCircle } from "lucide-react";
 
 type BiasProps = Omit<Insight, "summary" | "sentiment">;
 
 export default function Bias({ biasAssessment }: BiasProps) {
   return (
-    <Card className="rounded-lg overflow-hidden lg:w-1/2 shadow-lg">
-      <CardHeader className="bg-primary">
-        <CardTitle className="text-xl text-gray-200 ">
+    <Card className="rounded-lg p-6 bg-background  dark:bg-gray-800 shadow-lg overflow-hidden lg:w-1/2">
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2 font-bold sm:text-2xl text-primary">
+          <AlertCircle />
           Bias Assessment
         </CardTitle>
-        <CardDescription className="text-gray-300">
+        <CardDescription className="text-muted-foreground text-sm">
           Important information at a glance
         </CardDescription>
       </CardHeader>
       <CardContent className="p-4 sm:p-6">
         {biasAssessment.isBiased ? (
-          <div className="flex flex-col gap-2 text-muted-foreground">
-            <p>
-              <span className="text-red-500 font-semibold text-lg">
-                Biasness
-              </span>
-              : {biasAssessment.explanation}
-            </p>
-            <p>
-              <span className="text-green-500 font-semibold text-lg">
-                Solution
-              </span>
-              : {biasAssessment.solution}
-            </p>
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-3">
+              <AlertCircle className="text-red-500 mt-1 shrink-0" size={20} />
+              <div>
+                <h3 className=" text-red-500 font-semibold text-lg">
+                  Biasness
+                </h3>
+                <p className="text-foreground/80">
+                  {biasAssessment.explanation}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <CheckCircle className="text-green-500 mt-1 shrink-0" size={20} />
+              <div>
+                <h3 className="text-green-500 font-semibold text-lg">
+                  Solution:
+                </h3>
+                <p className="text-foreground/80">{biasAssessment.solution}</p>
+              </div>
+            </div>
           </div>
         ) : (
-          <div className="text-green-500"> No biasness found</div>
+          <div className="flex gap-3">
+            <CheckCircle className="text-green-500 mt-1 shrink-0" />
+            <div>
+              <h3 className="font-semibold text-green-400">
+                No Significant Bias Detected
+              </h3>
+              <p className="text-foreground/80">
+                The article appears to present a balanced view without
+                noticeable bias.
+              </p>
+            </div>
+          </div>
         )}
       </CardContent>
     </Card>

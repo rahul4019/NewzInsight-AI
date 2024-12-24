@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle } from "lucide-react";
+import { Circle, TrendingUp } from "lucide-react";
 import { Pie, PieChart } from "recharts";
 
 import {
@@ -49,19 +49,20 @@ export default function SentimentAnalysis({
   } satisfies ChartConfig;
 
   return (
-    <Card className="rounded-lg shadow-lg overflow-hidden lg:w-1/2">
-      <CardHeader className="bg-primary">
-        <CardTitle className="text-xl text-gray-200">
+    <Card className="rounded-lg p-6 bg-background  dark:bg-gray-800 shadow-lg overflow-hidden lg:w-1/2">
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2 font-bold sm:text-2xl text-primary">
+          <TrendingUp />
           Sentiment Analysis
         </CardTitle>
-        <CardDescription className="text-gray-300">
+        <CardDescription className="text-muted-foreground text-sm">
           Distribution of bias sentiment in the article content
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square font-semibold max-h-[300px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto font-semibold  text-sm max-h-[300px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />

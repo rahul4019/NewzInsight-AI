@@ -16,46 +16,32 @@ interface RecentAnalysisCardProps {
   index: number;
 }
 
-export function RecentAnalysisCard({
-  analysis,
-  index,
-}: RecentAnalysisCardProps) {
+export function RecentAnalysisCard({ analysis }: RecentAnalysisCardProps) {
   return (
     <motion.div
-      className="bg-card backdrop-blur-sm rounded-xl shadow-lg border  p-6 hover:shadow-xl transition-shadow"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-background p-6 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-300"
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
+      <div className="flex justify-end items-center mb-2">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          24-2-2024
+        </span>
+      </div>
       <h3 className="font-semibold text-xl mb-2 line-clamp-2">
         {analysis.title}
       </h3>
-      <p className="text-muted-foreground text-sm mb-4">
-        {analysis.source} • {analysis.date}
+      <p className="text-muted-foreground text-sm mb-4 text-clip">
+        Our AI has uncovered surprising patterns in global climate data. Find
+        out what this means for future predictions.
       </p>
 
       <div className="flex gap-3 mb-4">
-        <span
-          className={`px-3 py-1 rounded-full text-sm font-semibold ${
-            analysis.sentiment === "positive"
-              ? "border-2 border-green-500 text-green-500"
-              : analysis.sentiment === "negative"
-                ? "border-2 border-red-500 text-red-500"
-                : "border-2 border-gray-500 text-gray-500"
-          }`}
-        >
-          {analysis.sentiment}
+        <span className="border-2 text-xs py-1 border-yellow-500 text-yellow-500 px-2 flex items-center rounded-full">
+          neutral
         </span>
-        <span
-          className={`px-3 py-1 rounded-full text-sm ${
-            analysis.bias === "low"
-              ? "border-2 border-green-500 text-green-500"
-              : analysis.bias === "high"
-                ? "border-2 border-red-500 text-red-500"
-                : "border-2 border-gray-500 text-gray-500"
-          }`}
-        >
-          {analysis.bias} bias
+        <span className="border-2 text-xs py-1 border-red-500 text-red-500 px-2 flex items-center rounded-full">
+          Biased
         </span>
       </div>
 
