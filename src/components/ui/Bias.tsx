@@ -1,3 +1,4 @@
+import { Insight } from "@/app/insight-provider";
 import {
   Card,
   CardContent,
@@ -6,15 +7,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function KeyPoints({
-  biasAssessment,
-}: {
-  biasAssessment: {
-    isBiased: boolean;
-    explanation: string;
-    solution: string;
-  };
-}) {
+type BiasProps = Omit<Insight, "summary" | "sentiment">;
+
+export default function Bias({ biasAssessment }: BiasProps) {
   return (
     <Card className="rounded-lg overflow-hidden lg:w-1/2 shadow-lg">
       <CardHeader className="bg-primary">

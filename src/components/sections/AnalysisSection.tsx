@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PieChartSection from "../ui/Piechart";
 import Summary from "../ui/Summary";
-import KeyPoints from "../ui/KeyPoints";
+// import KeyPoints from "../ui/KeyPoints";
 import { useContext } from "react";
 import { InsightContext } from "@/app/insight-provider";
+import SentimentAnalysis from "../ui/SentimentAnalysis";
+import Bias from "../ui/Bias";
 
 export default function AnalysisSection() {
   const context = useContext(InsightContext);
@@ -38,8 +39,8 @@ export default function AnalysisSection() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="flex flex-col lg:flex-row justify-around w-full gap-4 ">
-                  <PieChartSection sentiment={sentiment} />
-                  <KeyPoints biasAssessment={biasAssessment} />
+                  <SentimentAnalysis sentiment={sentiment} />
+                  <Bias biasAssessment={biasAssessment} />
                 </div>
               </motion.div>
               <div>

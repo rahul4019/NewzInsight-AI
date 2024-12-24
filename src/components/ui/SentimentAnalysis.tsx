@@ -17,12 +17,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Insight } from "@/app/insight-provider";
+
+type SentimentAnalysisProps = Omit<Insight, "summary" | "biasAssessment">;
 
 export default function SentimentAnalysis({
   sentiment,
-}: {
-  sentiment: { positive: number; negative: number; neutral: number };
-}) {
+}: SentimentAnalysisProps) {
   const chartData = [
     { bias: "Positive", value: sentiment.positive, fill: "#00C853" },
     { bias: "Negative", value: sentiment.negative, fill: "#E63946" },
@@ -60,10 +61,11 @@ export default function SentimentAnalysis({
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto aspect-square font-semibold max-h-[300px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+
             <Pie data={chartData} dataKey="value" label nameKey="bias" />
           </PieChart>
         </ChartContainer>

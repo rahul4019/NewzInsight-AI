@@ -5,8 +5,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Insight } from "@/app/insight-provider";
 
-export default function Summary(summary: { summary: string }) {
+type SummaryProps = Omit<Insight, "sentiment" | "biasAssessment">;
+
+export default function Summary({ summary }: SummaryProps) {
   return (
     <Card className="h-full shadow-lg rounded-lg overflow-hidden">
       <CardHeader className="bg-primary">
@@ -18,7 +21,7 @@ export default function Summary(summary: { summary: string }) {
         </CardDescription>
       </CardHeader>
       <CardContent className="prose max-w-none p-4 sm:p-6">
-        <p className="text-muted-foreground">{summary.summary}</p>
+        <p className="text-muted-foreground">{summary}</p>
       </CardContent>
     </Card>
   );
