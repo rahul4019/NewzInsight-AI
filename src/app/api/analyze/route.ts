@@ -12,6 +12,6 @@ export async function POST(request: NextRequest) {
 
     const articleInsight = await getNewsInsight(articleText);
 
-    return NextResponse.json(articleInsight, { status: 200 });
+    return NextResponse.json({ ...articleInsight }, { status: 200 });
   } catch (error) {}
 }

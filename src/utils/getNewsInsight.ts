@@ -8,7 +8,7 @@ const constructPrompt = (articleText: string) => {
 3. Bias Assessment: 
     * Determine if the article exhibits any bias. 
     * If biased, provide a one-line explanation of the observed bias. 
-    * If biased, suggest one mitigation strategy to address the potential impact of the bias.
+    * If biased, suggest one solution strategy to address the potential impact of the bias.
     * If unbiased, state "No bias detected."
 
 Article:
@@ -26,7 +26,7 @@ Respond in JSON format like this:
   "biasAssessment": {
     "isBiased": true/false, 
     "explanation": "Explanation of bias (if applicable)", 
-    "mitigation": "Mitigation strategy (if applicable)" 
+    "solution": "Solution strategy (if applicable)" 
   }
 }
 `;

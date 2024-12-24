@@ -3,23 +3,26 @@
 import { motion } from "framer-motion";
 import BlurryBlob from "../ui/blurry-blob";
 import { Input } from "../ui/input";
-import { Ban, LoaderCircle, Sparkles } from "lucide-react";
+import { LoaderCircle, Sparkles } from "lucide-react";
 import { useContext, useState } from "react";
-import { InsightContext } from "@/app/insight-provider";
+import { Insight, InsightContext } from "@/app/insight-provider";
 import { toast } from "sonner";
 
 export function HeroSection() {
   const [loading, setLoading] = useState(false);
-  const { insight, setInsight } = useContext(InsightContext);
+  const context = useContext(InsightContext);
+
+  if (!context) {
+    throw new Error("no provider");
+  }
+
+  const { setInsight } = context;
+
   const [articleUrl, setArticleUrl] = useState("");
 
   const handleAnalyze = async () => {
     try {
       setLoading(true);
-      // const articleUrl =
-      //   "https://www.hindustantimes.com/india-news/arrest-warrant-issued-against-former-india-cricketer-robin-uthappa-in-alleged-epf-fraud-101734762519865.html";
-      // const articleUrl =
-      //   "https://nypost.com/2024/12/20/us-news/house-republicans-greenlight-short-term-spending-package-that-will-need-dem-support-just-hours-before-government-is-set-to-shut-down/";
 
       if (!articleUrl.trim()) {
         return;
@@ -35,7 +38,7 @@ export function HeroSection() {
         body: JSON.stringify(articleUrl),
       });
 
-      const data = await response.json();
+      const data: Insight = await response.json();
 
       console.log("Response: ", data);
       setInsight(data);
