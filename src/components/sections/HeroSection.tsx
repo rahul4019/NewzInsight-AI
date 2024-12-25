@@ -66,7 +66,7 @@ export function HeroSection() {
           Understand News Like Never Before
         </h1>
         <p className="text-xl text-muted-foreground">
-          Uncover bias, analyze sentiment, and get multiple perspectives on any
+          Uncover bias, analyze sentiment, and get comprehensive summary on any
           news article with our advanced AI analysis
         </p>
 
