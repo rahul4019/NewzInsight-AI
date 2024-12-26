@@ -12,12 +12,12 @@ export async function POST(request: NextRequest) {
     
 
     const articleText = await fetchAndExtractArticle(articleUrl);
+    console.log("Article text: ", articleText)
 
     const articleInsight = await getNewsInsight(articleText);
 
     // return;
     return NextResponse.json({ ...articleInsight }, { status: 200 });
-    // return NextResponse.json({msg: "hell" }, { status: 200 });
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);
