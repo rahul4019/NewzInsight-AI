@@ -28,7 +28,7 @@ export function HeroSection() {
         return;
       }
       // validation for url
-      const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/;
+      const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?(#[\w-=&]*)?$/;
       if (!urlRegex.test(articleUrl.trim())) {
         toast.error("Invalid URL");
         return;
