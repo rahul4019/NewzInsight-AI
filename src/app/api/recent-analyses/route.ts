@@ -11,7 +11,6 @@ export async function GET() {
       .from(articleAnalysesTable)
       .orderBy(desc(articleAnalysesTable.createdAt))
       .limit(3);
-    console.log(recentArticles);
 
     return NextResponse.json(
       {

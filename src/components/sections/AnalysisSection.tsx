@@ -49,6 +49,7 @@ export default function AnalysisSection() {
                         href={articleLink}
                         className="hover:underline"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         {title}
                       </Link>

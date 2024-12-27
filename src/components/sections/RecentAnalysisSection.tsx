@@ -1,33 +1,30 @@
-"use client";
-
 import { Clock } from "lucide-react";
 import { RecentAnalysisCard } from "../ui/RecentAnalysisCard";
 
-const recentAnalyses = [
-  {
-    title: "The Impact of AI on Future Jobs",
-    source: "techjournal.com",
-    date: "2 hours ago",
-    sentiment: "neutral",
-    bias: "low",
-  },
-  {
-    title: "Global Climate Change Report",
-    source: "sciencedaily.com",
-    date: "5 hours ago",
-    sentiment: "negative",
-    bias: "medium",
-  },
-  {
-    title: "New Economic Policy Announcement",
-    source: "financenews.com",
-    date: "1 day ago",
-    sentiment: "positive",
-    bias: "high",
-  },
-];
+export type Analysis = {
+  id: string;
+  title: string;
+  articleLink: string;
+  sentiment: {
+    positive: number;
+    negative: number;
+    neutral: number;
+  };
+  summary: string;
+  biasAssessment: {
+    isBiased: boolean;
+    explanation: string;
+    solution: string;
+  };
+  createdAt: string;
+};
 
-export function RecentAnalysisSection() {
+export async function RecentAnalysisSection() {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/recent-analyses`,
+  );
+  const { recentArticles }: { recentArticles: Analysis[] } = await data.json();
+
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -37,8 +34,8 @@ export function RecentAnalysisSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recentAnalyses.map((analysis, index) => (
-            <RecentAnalysisCard key={index} analysis={analysis} index={index} />
+          {recentArticles.map((analysis) => (
+            <RecentAnalysisCard key={analysis.id} analysis={analysis} />
           ))}
         </div>
       </div>

@@ -2,21 +2,26 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { Analysis } from "../sections/RecentAnalysisSection";
+import Link from "next/link";
 
-interface Analysis {
-  title: string;
-  source: string;
-  date: string;
-  sentiment: string;
-  bias: string;
-}
+export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
+  const { title, createdAt, summary, articleLink, biasAssessment, sentiment } =
+    analysis;
 
-interface RecentAnalysisCardProps {
-  analysis: Analysis;
-  index: number;
-}
+  const date = new Date(createdAt);
+  const formatedDate = date.toLocaleDateString("en-GB");
 
-export function RecentAnalysisCard({ analysis }: RecentAnalysisCardProps) {
+  // find dominationg sentiment and its value
+  const [dominatingSentiment, _] = Object.entries(sentiment).reduce(
+    ([defaultSentiment, maxValue], [currentSentiment, currentValue]) => {
+      return currentValue > maxValue
+        ? [currentSentiment, currentValue]
+        : [defaultSentiment, maxValue];
+    },
+    ["neutral", -Infinity],
+  );
+
   return (
     <motion.div
       className="bg-background p-6 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-300"
@@ -25,23 +30,40 @@ export function RecentAnalysisCard({ analysis }: RecentAnalysisCardProps) {
     >
       <div className="flex justify-end items-center mb-2">
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          24-2-2024
+          {formatedDate}
         </span>
       </div>
-      <h3 className="font-semibold text-xl mb-2 line-clamp-2">
-        {analysis.title}
+      <h3 className="font-semibold text-xl mb-2">
+        <Link
+          href={articleLink}
+          className="text-primary hover:underline"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {title}
+        </Link>
+        <ExternalLink size={20} className="inline-flex ml-2 text-primary" />
       </h3>
       <p className="text-muted-foreground text-sm mb-4 text-clip">
-        Our AI has uncovered surprising patterns in global climate data. Find
-        out what this means for future predictions.
+        {summary.slice(0, 100)}...
       </p>
 
       <div className="flex gap-3 mb-4">
-        <span className="border-2 text-xs py-1 border-yellow-500 text-yellow-500 px-2 flex items-center rounded-full">
-          neutral
+        <span
+          className={`border-2 text-xs py-1 ${
+            dominatingSentiment === "positive"
+              ? "border-green-500 text-green-500"
+              : dominatingSentiment === "negative"
+                ? "border-red-500 text-red-500"
+                : " border-yellow-500 text-yellow-500"
+          }  px-2 flex items-center rounded-lg font-medium`}
+        >
+          {dominatingSentiment}
         </span>
-        <span className="border-2 text-xs py-1 border-red-500 text-red-500 px-2 flex items-center rounded-full">
-          Biased
+        <span
+          className={`border-2  text-xs font-medium py-1 ${biasAssessment.isBiased ? "border-red-500 text-red-500" : "border-green-500 text-green-500"}  px-2 flex items-center rounded-lg`}
+        >
+          {biasAssessment.isBiased ? "Biased" : "Unbiased"}
         </span>
       </div>
 
