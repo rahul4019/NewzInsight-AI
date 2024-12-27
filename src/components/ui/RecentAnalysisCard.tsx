@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 import { Analysis } from "../sections/RecentAnalysisSection";
 import Link from "next/link";
 
@@ -42,7 +42,7 @@ export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
         >
           {title}
         </Link>
-        <ExternalLink size={20} className="inline-flex ml-2 text-primary" />
+        <ExternalLink size={15} className="inline-flex ml-2 text-primary" />
       </h3>
       <p className="text-muted-foreground text-sm mb-4 text-clip">
         {summary.slice(0, 100)}...
@@ -67,10 +67,14 @@ export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
         </span>
       </div>
 
-      <button className="text-primary text-sm font-medium inline-flex items-center gap-1">
-        View Analysis
-        <ExternalLink className="h-4 w-4" />
-      </button>
+      <motion.button
+        className="flex items-center text-primary font-medium"
+        whileHover={{ x: 5 }}
+        transition={{ type: "spring", stiffness: 400 }}
+      >
+        <span>View full analysis</span>
+        <ChevronRight size={20} className="mt-1" />
+      </motion.button>
     </motion.div>
   );
 }
