@@ -5,9 +5,8 @@ import BlurryBlob from "../ui/blurry-blob";
 import { Input } from "../ui/input";
 import { LoaderCircle, Sparkles } from "lucide-react";
 import { useContext, useState } from "react";
-import { Insight, InsightContext } from "@/app/insight-provider";
+import { InsightContext } from "@/app/insight-provider";
 import { toast } from "sonner";
-import { error } from "console";
 
 export function HeroSection() {
   const [loading, setLoading] = useState(false);

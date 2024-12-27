@@ -13,7 +13,9 @@ export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
   const formatedDate = date.toLocaleDateString("en-GB");
 
   // find dominationg sentiment and its value
-  const [dominatingSentiment, _] = Object.entries(sentiment).reduce(
+  const [dominatingSentiment, dominatingSentimentValue] = Object.entries(
+    sentiment,
+  ).reduce(
     ([defaultSentiment, maxValue], [currentSentiment, currentValue]) => {
       return currentValue > maxValue
         ? [currentSentiment, currentValue]
