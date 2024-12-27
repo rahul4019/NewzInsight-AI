@@ -8,16 +8,19 @@ export async function POST(request: NextRequest) {
 
     const articleUrl = body;
 
-    console.log(articleUrl)
-    
+    const articleContent = await fetchAndExtractArticle(articleUrl);
 
-    const articleText = await fetchAndExtractArticle(articleUrl);
-    console.log("Article text: ", articleText)
+    if (typeof articleContent === "string") {
+      return NextResponse.json(
+        { message: "Could not extract the content from the article" },
+        { status: 500 },
+      );
+    } else {
+      const articleInsight = await getNewsInsight(articleContent.articleText);
+      const title = articleContent.articleTitle;
 
-    const articleInsight = await getNewsInsight(articleText);
-
-    // return;
-    return NextResponse.json({ ...articleInsight }, { status: 200 });
+      return NextResponse.json({ title, ...articleInsight }, { status: 200 });
+    }
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);
