@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Summary from "../ui/Summary";
-// import KeyPoints from "../ui/KeyPoints";
 import { useContext } from "react";
 import { InsightContext } from "@/app/insight-provider";
 import SentimentAnalysis from "../ui/SentimentAnalysis";
@@ -17,7 +16,7 @@ export default function AnalysisSection() {
 
   if (!context.insight) return null;
 
-  const { sentiment, summary, biasAssessment } = context.insight;
+  const { sentiment, summary, biasAssessment, title } = context.insight;
 
   return (
     <div>
@@ -32,6 +31,15 @@ export default function AnalysisSection() {
             <h1 className="text-3xl text-primary sm:text-4xl font-bold mb-6 sm:mb-8 text-center">
               Analysis of the article
             </h1>
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                {title}
+              </motion.div>
+            </div>
             <div className="flex flex-col gap-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

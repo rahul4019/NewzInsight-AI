@@ -8,7 +8,7 @@ import {
 import { Insight } from "@/app/insight-provider";
 import { FileText } from "lucide-react";
 
-type SummaryProps = Omit<Insight, "sentiment" | "biasAssessment">;
+type SummaryProps = Omit<Insight, "sentiment" | "biasAssessment" | "title">;
 
 export default function Summary({ summary }: SummaryProps) {
   return (

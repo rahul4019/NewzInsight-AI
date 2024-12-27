@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { AlertCircle, CheckCircle } from "lucide-react";
 
-type BiasProps = Omit<Insight, "summary" | "sentiment">;
+type BiasProps = Omit<Insight, "summary" | "sentiment" | "title">;
 
 export default function Bias({ biasAssessment }: BiasProps) {
   return (

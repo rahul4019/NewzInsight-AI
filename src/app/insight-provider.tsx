@@ -3,6 +3,7 @@
 import { createContext, ReactNode, useState } from "react";
 
 export type Insight = {
+  title: string;
   sentiment: {
     positive: number;
     negative: number;

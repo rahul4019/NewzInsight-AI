@@ -7,6 +7,7 @@ import { LoaderCircle, Sparkles } from "lucide-react";
 import { useContext, useState } from "react";
 import { Insight, InsightContext } from "@/app/insight-provider";
 import { toast } from "sonner";
+import { error } from "console";
 
 export function HeroSection() {
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,8 @@ export function HeroSection() {
         return;
       }
       // validation for url
-      const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?(#[\w-=&]*)?$/;
+      const urlRegex =
+        /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?(#[\w-=&]*)?$/;
       if (!urlRegex.test(articleUrl.trim())) {
         toast.error("Invalid URL");
         return;
@@ -38,8 +40,12 @@ export function HeroSection() {
         body: JSON.stringify(articleUrl),
       });
 
-      const data: Insight = await response.json();
+      const data = await response.json();
 
+      if (data.message) {
+        toast.error(data.message);
+        return;
+      }
       setInsight(data);
       setArticleUrl("");
     } catch (error) {
