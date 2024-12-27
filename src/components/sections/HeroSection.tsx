@@ -46,6 +46,7 @@ export function HeroSection() {
         toast.error(data.message);
         return;
       }
+
       setInsight(data);
       setArticleUrl("");
     } catch (error) {

@@ -4,6 +4,7 @@ import { createContext, ReactNode, useState } from "react";
 
 export type Insight = {
   title: string;
+  articleLink: string;
   sentiment: {
     positive: number;
     negative: number;

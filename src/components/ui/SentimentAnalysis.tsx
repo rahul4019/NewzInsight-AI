@@ -21,7 +21,7 @@ import { Insight } from "@/app/insight-provider";
 
 type SentimentAnalysisProps = Omit<
   Insight,
-  "summary" | "biasAssessment" | "title"
+  "summary" | "biasAssessment" | "title" | "articleLink"
 >;
 
 export default function SentimentAnalysis({

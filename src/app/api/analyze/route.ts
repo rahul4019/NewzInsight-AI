@@ -19,7 +19,10 @@ export async function POST(request: NextRequest) {
       const articleInsight = await getNewsInsight(articleContent.articleText);
       const title = articleContent.articleTitle;
 
-      return NextResponse.json({ title, ...articleInsight }, { status: 200 });
+      return NextResponse.json(
+        { title, articleLink: articleUrl, ...articleInsight },
+        { status: 200 },
+      );
     }
   } catch (error: unknown) {
     if (error instanceof Error) {

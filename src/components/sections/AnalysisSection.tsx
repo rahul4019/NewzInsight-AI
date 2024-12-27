@@ -6,6 +6,9 @@ import { useContext } from "react";
 import { InsightContext } from "@/app/insight-provider";
 import SentimentAnalysis from "../ui/SentimentAnalysis";
 import Bias from "../ui/Bias";
+import { Card, CardHeader, CardTitle } from "../ui/card";
+import { Globe } from "lucide-react";
+import Link from "next/link";
 
 export default function AnalysisSection() {
   const context = useContext(InsightContext);
@@ -16,7 +19,8 @@ export default function AnalysisSection() {
 
   if (!context.insight) return null;
 
-  const { sentiment, summary, biasAssessment, title } = context.insight;
+  const { sentiment, summary, biasAssessment, title, articleLink } =
+    context.insight;
 
   return (
     <div>
@@ -31,13 +35,26 @@ export default function AnalysisSection() {
             <h1 className="text-3xl text-primary sm:text-4xl font-bold mb-6 sm:mb-8 text-center">
               Analysis of the article
             </h1>
-            <div>
+            <div className="mb-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                {title}
+                <Card className="h-full p-6 bg-background dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+                  <CardHeader>
+                    <CardTitle className="text-xl flex items-center gap-2 font-bold sm:text-2xl text-primary">
+                      <Globe />
+                      <Link
+                        href={articleLink}
+                        className="hover:underline"
+                        target="_blank"
+                      >
+                        {title}
+                      </Link>
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
               </motion.div>
             </div>
             <div className="flex flex-col gap-4">
