@@ -20,25 +20,43 @@ export type Analysis = {
 };
 
 export async function RecentAnalysisSection() {
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/recent-analyses`,
-  );
-  const { recentArticles }: { recentArticles: Analysis[] } = await data.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/recent-analyses`,
+    );
 
-  return (
-    <section className="py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center gap-3 mb-8">
-          <Clock className="h-6 w-6 text-primary" />
-          <h2 className="text-3xl font-bold text-primary">Recent Analyses</h2>
-        </div>
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recentArticles.map((analysis) => (
-            <RecentAnalysisCard key={analysis.id} analysis={analysis} />
-          ))}
+    const { recentArticles }: { recentArticles: Analysis[] } = await res.json();
+
+    return (
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <Clock className="h-6 w-6 text-primary" />
+            <h2 className="text-3xl font-bold text-primary">Recent Analyses</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recentArticles.map((analysis) => (
+              <RecentAnalysisCard key={analysis.id} analysis={analysis} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  } catch (error) {
+    console.error("Error fetching recent articles:", error);
+    return (
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-red-500">
+            Failed to load recent analyses. Please try again later.
+          </p>
+        </div>
+      </section>
+    );
+  }
 }
