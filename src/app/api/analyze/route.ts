@@ -49,7 +49,10 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);
-      return NextResponse.json({ message: error.message }, { status: 500 });
+      return NextResponse.json(
+        { message: "Internal server error" },
+        { status: 500 },
+      );
     } else {
       console.error("Unknown error: ", error);
     }
