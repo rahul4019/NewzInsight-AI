@@ -2,6 +2,16 @@ import { articleAnalysesTable } from "@/db/schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { desc, InferSelectModel } from "drizzle-orm";
 import { RecentAnalysisCard } from "@/components/ui/RecentAnalysisCard";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import getPaginationRange from "@/utils/getPaginationRange";
 
 type ArticleAnalysis = InferSelectModel<typeof articleAnalysesTable>;
 
@@ -9,10 +19,14 @@ type ArticleAnalysis = InferSelectModel<typeof articleAnalysesTable>;
 async function fetchPaginatedAnalyses(
   page: number,
   pageSize: number,
-): Promise<ArticleAnalysis[]> {
+): Promise<{ analyses: ArticleAnalysis[]; totalPages: number }> {
   const offset = (page - 1) * pageSize;
 
   const db = drizzle(process.env.DATABASE_URL!);
+
+  const analysesCount = await db.$count(articleAnalysesTable);
+  console.log("typeof of Count: ", typeof analysesCount);
+  console.log("Count: ", analysesCount);
 
   const analyses: ArticleAnalysis[] = await db
     .select()
@@ -20,7 +34,8 @@ async function fetchPaginatedAnalyses(
     .orderBy(desc(articleAnalysesTable.createdAt))
     .offset(offset)
     .limit(pageSize);
-  return analyses;
+
+  return { analyses, totalPages: Math.ceil(analysesCount / pageSize) };
 }
 
 type Params = Promise<{ page: string }>;
@@ -33,21 +48,69 @@ export default async function Page(props: { params: Params }) {
   if (isNaN(page) || page < 1) {
     return (
       <div>
-        <h1>Invalid page number</h1>
+        <h1 className="text-3xl">Invalid page number</h1>
       </div>
     );
   }
 
-  const analyses: ArticleAnalysis[] = await fetchPaginatedAnalyses(page, 9);
+  const {
+    analyses,
+    totalPages,
+  }: {
+    analyses: ArticleAnalysis[];
+    totalPages: number;
+  } = await fetchPaginatedAnalyses(page, 9);
+
+  console.log(totalPages);
 
   try {
     return (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {analyses.map((analysis) => (
-          <div key={analysis.id}>
-            <RecentAnalysisCard analysis={analysis} />
-          </div>
-        ))}
+      <div className="flex flex-col items-center gap-10 p-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {analyses.map((analysis) => (
+            <div key={analysis.id}>
+              <RecentAnalysisCard analysis={analysis} />
+            </div>
+          ))}
+        </div>
+        <Pagination className="">
+          <PaginationContent>
+            {/* previous button */}
+            <PaginationItem className={page === 1 ? "hidden" : ""}>
+              <PaginationPrevious
+                href={`/analyses/${page > 1 ? page - 1 : page}`}
+              />
+            </PaginationItem>
+
+            {getPaginationRange(page, totalPages).map((pageNumber, index) => {
+              if (pageNumber === "ellipsis") {
+                return (
+                  <PaginationItem key={`ellipsis-${index}`}>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                );
+              }
+
+              return (
+                <PaginationItem key={pageNumber}>
+                  <PaginationLink
+                    href={`/analyses/${pageNumber}`}
+                    className={pageNumber === page ? "active" : ""}
+                  >
+                    {pageNumber}
+                  </PaginationLink>
+                </PaginationItem>
+              );
+            })}
+
+            {/* next button */}
+            <PaginationItem className={page === totalPages ? "hidden" : ""}>
+              <PaginationNext
+                href={`/analyses/${page < totalPages ? page + 1 : page}`}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     );
   } catch (error) {
@@ -59,4 +122,7 @@ export default async function Page(props: { params: Params }) {
       </div>
     );
   }
+}
+function count() {
+  throw new Error("Function not implemented.");
 }
