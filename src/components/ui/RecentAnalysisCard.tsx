@@ -79,7 +79,7 @@ export function RecentAnalysisCard({
         whileHover={{ x: 5 }}
         transition={{ type: "spring", stiffness: 400 }}
       >
-        <span>View full analysis</span>
+        <Link href={`/${analysis.id}`}>View full analysis</Link>
         <ChevronRight size={20} className="mt-1" />
       </motion.button>
     </motion.div>

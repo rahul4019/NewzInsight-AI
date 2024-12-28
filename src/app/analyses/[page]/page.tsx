@@ -25,8 +25,6 @@ async function fetchPaginatedAnalyses(
   const db = drizzle(process.env.DATABASE_URL!);
 
   const analysesCount = await db.$count(articleAnalysesTable);
-  console.log("typeof of Count: ", typeof analysesCount);
-  console.log("Count: ", analysesCount);
 
   const analyses: ArticleAnalysis[] = await db
     .select()
@@ -60,8 +58,6 @@ export default async function Page(props: { params: Params }) {
     analyses: ArticleAnalysis[];
     totalPages: number;
   } = await fetchPaginatedAnalyses(page, 9);
-
-  console.log(totalPages);
 
   try {
     return (
