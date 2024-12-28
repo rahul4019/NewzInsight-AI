@@ -16,7 +16,7 @@ export function RecentAnalysisCardSkeleton() {
         <div className="flex justify-between items-center">
           <Skeleton className="h-4 w-1/3" />
         </div>
-        <button className="flex items-center text-primary font-medium mt-4">
+        <button className="flex items-center text-primary font-medium pt-16">
           <span>View full analysis</span>
           <ChevronRight size={20} className="mt-1" />
         </button>

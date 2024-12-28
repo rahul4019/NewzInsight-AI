@@ -38,7 +38,7 @@ export default async function Page(props: { params: Params }) {
     );
   }
 
-  const analyses: ArticleAnalysis[] = await fetchPaginatedAnalyses(page, 6);
+  const analyses: ArticleAnalysis[] = await fetchPaginatedAnalyses(page, 9);
 
   try {
     return (
