@@ -23,7 +23,10 @@ async function fetchPaginatedAnalyses(
   return analyses;
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
+type Params = Promise<{ page: string }>;
+
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
   const page = parseInt(params.page, 10);
 
   // page number validation
@@ -35,12 +38,11 @@ export default async function Page({ params }: { params: { page: string } }) {
     );
   }
 
-  const analyses: ArticleAnalysis[] = await fetchPaginatedAnalyses(page, 2);
+  const analyses: ArticleAnalysis[] = await fetchPaginatedAnalyses(page, 6);
 
   try {
     return (
-      <div className="grid">
-        <h1 className="text-3xl">hello world</h1>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {analyses.map((analysis) => (
           <div key={analysis.id}>
             <RecentAnalysisCard analysis={analysis} />
