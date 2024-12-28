@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ![NewzInsight Banner](./public/banner.png)
 
-## Getting Started
+# NewzInsight AI
 
-First, run the development server:
+Welcome to **NewzInsight AI**, your go-to platform for analyzing news articles' sentiment and detecting potential bias! With NewzInsight, you can:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Gauge Sentiment**: Quickly understand whether a news article carries positive, negative, or neutral tones.
+- **Spot Bias**: Detect possible bias in the content and gain insights into its perspective.
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Sentiment Analysis**: Uses AI to evaluate the emotional tone of articles.
+- **Bias Detection**: Highlights linguistic patterns that may indicate bias.
+- **Intuitive Interface**: A clean and user-friendly interface powered by [Shadcn/ui
+](https://ui.shadcn.com/).
+- **Fast and Reliable**: Built with modern web technologies like React and Next.js for smooth performance.
+- **API Integration**: Supports fetching articles directly from URLs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: React, Next.js, Tailwind CSS
+- **AI Services**: Google Gemini for sentiment and bias analysis
+- **Database**: PostgreSQL for storing analysis history
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌟 Installation
 
-## Deploy on Vercel
+Follow these steps to set up and run NewzInsight locally:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
+- Node.js and npm installed on your machine
+- PostgreSQL instance running locally or in the cloud
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Steps
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/rahul4019/NewzInsight-AI
+   cd NewzInsight-AI
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory and add the following:
+   ```env
+   DATABASE_URL=your-postgres-connection-string
+   GEMINI_API_KEY=your-google-gemini-api-key
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
+   ```
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+## 🎨 Screenshots
+
+![Home Page](./public/home.png)
+
+![Analysis Results](./public/analysis_result.png)
+
+---
+
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have suggestions, ideas, or want to fix bugs, feel free to:
+
+1. Fork the repository.
+2. Create a new branch (`feature/new-feature`).
+3. Commit your changes.
+4. Push to your branch and create a Pull Request.
+
+---
+
+## 📧 Contact
+
+Have questions or feedback? Reach out at [rahulkashyap4019@gmail.com](mailto:rahulkashyap4019@gmail.com).
+
+---
+
+Thank you for checking out NewzInsight! Stay informed, stay unbiased. 🌟
