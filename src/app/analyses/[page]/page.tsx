@@ -95,7 +95,11 @@ export default async function Page(props: { params: Params }) {
                 <PaginationItem key={pageNumber}>
                   <PaginationLink
                     href={`/analyses/${pageNumber}`}
-                    className={pageNumber === page ? "active" : ""}
+                    className={
+                      pageNumber === page
+                        ? "bg-primary text-white"
+                        : "hover:border-2 border-primary"
+                    }
                   >
                     {pageNumber}
                   </PaginationLink>
@@ -122,7 +126,4 @@ export default async function Page(props: { params: Params }) {
       </div>
     );
   }
-}
-function count() {
-  throw new Error("Function not implemented.");
 }

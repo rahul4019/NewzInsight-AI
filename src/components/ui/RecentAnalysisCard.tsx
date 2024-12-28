@@ -43,13 +43,13 @@ export function RecentAnalysisCard({
       <h3 className="font-semibold text-xl mb-2">
         <Link
           href={articleLink}
-          className="hover:underline underline-primary"
+          className="hover:underline hover:text-primary underline-primary"
           target="_blank"
           rel="noreferrer"
         >
           {title}
+          <ExternalLink size={15} className="inline-flex ml-2 text-primary" />
         </Link>
-        <ExternalLink size={15} className="inline-flex ml-2 text-primary" />
       </h3>
       <p className="text-muted-foreground text-sm mb-4 text-clip">
         {summary.slice(0, 100)}...
