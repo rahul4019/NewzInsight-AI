@@ -1,5 +1,7 @@
 import { Clock } from "lucide-react";
 import { RecentAnalysisCard } from "../ui/RecentAnalysisCard";
+import { InferSelectModel } from "drizzle-orm";
+import { articleAnalysesTable } from "@/db/schema";
 
 export type Analysis = {
   id: string;
@@ -27,7 +29,10 @@ export async function RecentAnalysisSection() {
     },
   );
 
-  const { recentArticles }: { recentArticles: Analysis[] } = await data.json();
+  const {
+    recentArticles,
+  }: { recentArticles: InferSelectModel<typeof articleAnalysesTable>[] } =
+    await data.json();
 
   return (
     <section className="py-16 px-4">

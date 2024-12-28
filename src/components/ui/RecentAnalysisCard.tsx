@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { Analysis } from "../sections/RecentAnalysisSection";
 import Link from "next/link";
+import { articleAnalysesTable } from "@/db/schema";
+import { InferSelectModel } from "drizzle-orm";
 
-export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
+export function RecentAnalysisCard({
+  analysis,
+}: {
+  analysis: InferSelectModel<typeof articleAnalysesTable>;
+}) {
   const { title, createdAt, summary, articleLink, biasAssessment, sentiment } =
     analysis;
 
