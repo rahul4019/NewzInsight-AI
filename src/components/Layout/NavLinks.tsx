@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const links = [
-  { name: "History", link: "/history" },
+  { name: "All Analyses", link: "/analyses" },
   { name: "About", link: "/#about" },
 ];
 

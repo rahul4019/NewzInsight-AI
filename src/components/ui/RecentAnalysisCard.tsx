@@ -38,7 +38,7 @@ export function RecentAnalysisCard({ analysis }: { analysis: Analysis }) {
       <h3 className="font-semibold text-xl mb-2">
         <Link
           href={articleLink}
-          className="text-primary hover:underline"
+          className="hover:underline underline-primary"
           target="_blank"
           rel="noreferrer"
         >
