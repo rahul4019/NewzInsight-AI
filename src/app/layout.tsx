@@ -17,9 +17,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://newz-insight.vercel.app"),
   title: "Newz Insight",
   description:
     "Unveil AI: Summarize news, detect bias, and analyze sentiment with the power of AI.",
+  keywords:["News", "AI", "News Analysis", "Sentiment", "Summary"],
+  openGraph:{
+    title: 'Newz Insight AI',
+    description: 'Analyze news sentiment and detect bias with ease!',
+    images: ['/social.png'],
+  },
+  twitter:{
+    title: 'Newz Insight AI',
+    description: 'Analyze news sentiment and detect bias with ease!',
+    images: ['/social.png'],
+  }
 };
 
 export default function RootLayout({
