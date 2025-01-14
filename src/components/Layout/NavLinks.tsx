@@ -10,7 +10,7 @@ const links = [
 
 export function NavLinks() {
   return (
-    <nav className="hidden md:flex items-center space-x-6">
+    <nav className="flex p-0 flex-row items-center space-x-6">
       {links.map((link) => (
         <motion.div
           key={link.name}
@@ -18,7 +18,9 @@ export function NavLinks() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href={link.link}> {link.name} </Link>
+          <Link href={link.link} className="font-semibold">
+            {link.name}
+          </Link>
         </motion.div>
       ))}
     </nav>
