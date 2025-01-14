@@ -86,6 +86,12 @@ export function HeroSection() {
                   type="url"
                   onChange={(e) => setArticleUrl(e.target.value)}
                   value={articleUrl}
+                  disabled={loading}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleAnalyze();
+                    }
+                  }}
                 />
                 <button
                   className="bg-primary inline-flex items-center rounded-e-lg border border-input px-3 text-sm font-medium text-white outline-offset-2 transition-colors hover:bg-primary/80 hover:text-white focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50"
@@ -95,12 +101,12 @@ export function HeroSection() {
                   {loading ? (
                     <>
                       <LoaderCircle size={18} className="mr-2 animate-spin" />
-                      <span className="text-lg">Analyze</span>
+                      <span className="hidden md:block text-lg">Analyze</span>
                     </>
                   ) : (
                     <>
                       <Sparkles size={18} className="mr-2" />
-                      <span className="text-lg">Analyze</span>
+                      <span className="hidden md:block text-lg">Analyze</span>
                     </>
                   )}
                 </button>
