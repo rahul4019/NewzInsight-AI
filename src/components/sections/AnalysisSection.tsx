@@ -43,7 +43,7 @@ export default function AnalysisSection() {
               >
                 <Card className="h-full p-6 bg-background dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
                   <CardHeader>
-                    <CardTitle className="text-xl flex items-center gap-2 font-bold sm:text-2xl text-primary">
+                    <CardTitle className="text-xl flex items-baseline gap-2 font-bold sm:text-2xl text-primary">
                       <Globe />
                       <Link
                         href={articleLink}

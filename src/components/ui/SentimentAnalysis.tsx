@@ -65,7 +65,7 @@ export default function SentimentAnalysis({
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto font-semibold  text-sm max-h-[300px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto font-semibold text-sm max-h-[300px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
